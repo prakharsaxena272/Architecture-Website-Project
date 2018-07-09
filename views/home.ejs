@@ -1,0 +1,140 @@
+
+		 <% include partials/header.ejs %>
+		<!-- <p style="color:green; font-size: 18px; font-weight: bold; "> &nbsp &nbsp FootPrint</p><br><br> -->
+      
+		
+		<div class="header" id="myHeader">
+			<h2>An Architechtural Point</h2>
+		</div>
+<br><br>
+		<div class="container">
+			<div style="height: 100%; width:100%; background: black; opacity: 0.9; border-radius: 3%;"
+					<div class="welcome">
+				<br><h4 >Welcome To Our Site</h4>
+				<!-- <div class="pull-right"><img src="images/back1.jpg" class="img responsive" style=" margin-left:20px; margin-bottom:10px;"></div> -->
+				<p>We believe good design is produced from careful study and research, combined with technical 
+					knowledge and artistic judgment. Attention to detail, proportions and scale, t
+					ogether with common sense ensure the finished product fully develops the potential
+					 within the concept. Past and current projects include commercial, residential, 
+					 health clubs, spas and salons, hospitality, pharmaceutical, exhibition, institutional,
+						mixed-use and high end residential interior projects. Extensive use of CAD and computer 3D Modeling,
+						 which is done in house, helps the client to visualize their project in the best possible manner.
+							All experimentation with space, light and material can then be done using this platform till the
+							 final result is achieved. </p>
+				<br><h4>Our Mission</h4>
+				<p>Designing with a belief that a residential or corporate design involves not just layouts and arrangement of furniture but also the need for a design, which yields Positive Energy and leads to a prosperous Lifestyle. We would like to meet new people, design more spaces & give a new dimension to Interior Design in INDIA..
+				
+				</p>
+				<br>
+				<h4> Our Value</h4>
+				<p>
+				We attribute the success of our practice to the values that we believe in and not just to our architectural style. The highest standards of professional integrity. Transparent communications. Appropriate cost effective design solutions. Zero error quality assurance. Adherence to challenging deadlines. We believe that the built form is permanent. We, therefore, carry a responsibility not only to our clients and users of our buildings, but to the community at large.</p>
+				
+				</div>
+				
+				
+				
+				
+				</div>
+				
+				
+				
+				
+				<div class="content" id="content" style="">
+			<center><h1 style="padding:40px 40px 0px 40px;">Our Services</h1></center>
+			<hr>
+			</div>
+		<div class="container" style="margin:auto;">	
+				<div id="row">
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" >
+						<div class="works">
+						
+							<h3>Architecture</h3>
+							<p>We offers integrated design services for the built
+									environment, encompassing master planning, architectural, landscape, interior, lighting and furniture
+									 design.</p>
+						</div>
+						
+					</div>
+
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" >
+							<div class="works">
+								<h3>Exterior Design</h3>
+								<p>Content</p>
+							</div>
+							
+						</div>
+
+						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" >
+								<div class="works">
+									<h3> Site Visit</h3>
+									<p>Content</p>
+								</div>
+								
+							</div>
+
+				</div>
+			</div>
+			
+<div style="height: 20%;margin-top:80px; background:orange">
+		<div class="button-2">
+				<div class="eff-2"></div>
+				<a href="/contact"> Contact Us</a>
+			</div>
+			</div>
+
+			
+<div class="timings" style="   height: 55%; background-image: url('images/map1.jpg');background-size: cover; background-position:center; background-size:cover; background-position: fixed;">
+		<div style="height: 100%; width: 100%; background : black; opacity:0.8;  ">
+				<div class="center-boder">
+						<h3>Hours Of Opening </h3>
+						<p><span>Monday to Saturday: 
+							9:00 AM To 9:00 PM<br>
+							</span> </p>
+						<br> 
+						<h3>For more Info..</h3>
+						<p> <span>Contact us: +91-9412184482</span> </p>
+					</div>
+		</div> 
+			</div>
+
+</div>
+<!-- 
+			<div class="contact_btn" style="height:30%; text-align:center ; background: orange; ">
+						<button class="button8"><span>Contact Us</span></button>
+				</div>
+		 -->
+			
+				  <div class="content" style="">
+							<center><h1>Projects/Designs</h1></center>
+							<hr>
+							</div>
+							<div class="container"  >
+
+			<div class="row">
+					<% designs.forEach(function(design){ %>
+					<div class="col-sm-6 col-md-4 col-xs-12 col-lg-4" >
+							<div >
+								<div class="hovereffect thumbnail">
+										<img class="img-responsive" src=" <%= design.image %>" style="height:40%; width:100%;">
+									<div class="overlay">
+									<h2>	<%= design.name %> </h2>
+									<p> <a href="#" >More Info</a></p>
+									</div>
+								</div>
+							
+							
+				
+				
+					</div>
+					</div>
+			<% }); %>
+					</div>
+					</div>
+					
+			
+
+
+					<% include partials/footer.ejs %>
+			
+
