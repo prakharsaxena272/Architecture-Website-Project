@@ -8,7 +8,6 @@
 <button class="btn btn-lg btn-primary btn-block"> Submit </button>
 </form>
 </div>
-<!-- btn block to take entire width -->
 </div>
 </div>
 </body>

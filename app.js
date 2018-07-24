@@ -1,34 +1,95 @@
 var express= require("express");
 var mongoose = require("mongoose");
 var passport = require("passport");
-
+var nodemailer = require('nodemailer');
 var bodyParser = require("body-parser");
 var local =      require("passport-local");
 var plm = require("passport-local-mongoose");
 var User = require("./models/user");
+const multer = require('multer');
+const path = require('path');
 mongoose.connect("mongodb://localhost/arch"); 
 
 var app = express();
-app.use(require("express-session")({
-    secret : "i am smart",
-    resave : false,
-    saveUnitialized : false
-
-
-}));
-
-
-app.use(bodyParser.urlencoded({extended: true}));
-
-
-
-
 app.set("view engine" , "ejs" );
 // var path = require('path');
 //app.use
 //app.set('view engine', 'html');
 //app.use(express.static('views'));
-app.use(express.static('public'));
+app.use(express.static('public')); 
+var pass = "deep1234";
+app.use(bodyParser.urlencoded({extended: true}));
+
+// Set The Storage Engine
+const storage = multer.diskStorage({
+  destination: './public/images/',
+  filename: function(req, file, cb){
+    cb(null,file.originalname  );
+  }
+});
+
+const upload = multer({
+    storage: storage,
+    limits:{fileSize: 1000000},
+    fileFilter: function(req, file, cb){
+      checkFileType(file, cb);
+    }
+  }).single('projects');
+  
+  // Check File Type
+  function checkFileType(file, cb){
+    // Allowed ext
+    const filetypes = /jpeg|jpg|png|gif|pdf/;
+    // Check ext
+    const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+    console.log(extname);
+    // Check mime
+    const mimetype = filetypes.test(file.mimetype);
+  
+    if(mimetype && extname){
+      return cb(null,true);
+    } else {
+      cb('Error: Images Only!');
+    }
+  }
+  
+
+
+//   app.get('/upload', (req, res) => res.render('index'));
+
+app.post('/upload', (req, res) => {
+  upload(req, res, (err) => {
+    if(err){
+      res.render('admin', {
+        msg: err
+      });
+    } else {
+      if(req.file == undefined){
+        res.render('admin', {
+          msg: 'Error: No File Selected!'
+        });
+      } else {
+        res.render('admin', {
+          msg: 'File Uploaded!',
+          file: `uploads/${req.file.filename}`
+        });
+      }
+    }
+  });
+});
+
+
+
+
+
+
+app.use(require("express-session")({
+    secret : "i am smart",
+    resave : false,
+    saveUninitialized : false
+}));
+
+
 
 
 
@@ -38,7 +99,25 @@ app.use(passport.session());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 passport.use(new local(User.authenticate()));
-
+// passport.use(new LocalStrategy(function(username, password, done){
+//     if(username === 'admin'){
+//         //Done!
+//     }
+//     else{
+//         User.findOne({username:username}, function(error, results){
+//             console.log(results);
+//             if(error) throw error;
+//             else{
+//                 if(password == results.password){
+//                     return done(null, {user_id:results.id});
+//                 }
+//                 else{
+//                     return done(null, false);
+//                 }
+//             }
+//         });
+//     }
+// }));
 var Schema = new mongoose.Schema({
 	//index : Number,
 	name : String,
@@ -55,15 +134,49 @@ app.get("/register", function(req,res){
 });
 
 
+
+app.post('/signup', function(req, res){
+	var email = req.body.email;
+	var name = req.body.name;
+    var msg = req.body.message;
+    var tel = req.body.telephone;
+    var subject = req.body.subject;
+	var data = {name : name , email : email , message : msg , telephone : tel , subject : subject};
+	var transporter = nodemailer.createTransport({
+        host: 'smtp-mail.outlook.com', //Change HOST
+        port:   587,
+        secure: false, 
+        auth: {
+            user: 'prakharsaxena303@outlook.com',   // generated ethereal user
+            pass: 'Robin123@'                  // generated ethereal password
+        }
+    });
+    let mailOptions = {
+        from: 'prakharsaxena303@outlook.com', // sender address
+        to: 'prakharsaxena303@gmail.com', // list of receivers
+        subject: 'Hello', // Subject line
+        text: 'Hello testing with    '+name+'    email    '+email+ '     '+msg +'     ' +tel +'        ' + subject // plain text body
+    };
+    transporter.sendMail(mailOptions, function(error, info){
+    	if(error){
+        	return console.log(error);
+    	}
+    	console.log('Message sent: ' + info.response);
+      res.render("submit.ejs");
+   });
+});
+
+
+
 app.post("/register", function(req,res){
-var user = req.body.name;
-var pass = req.body.pass;
+var username = req.body.username;
+var password = req.body.password;
 var email = req.body.email;
 var gender = req.body.gender;
 // res.render('sdfghj');
 //it is not good to save the pssword in the database so we just 
 // pass it   parameter to the database which is stored as a string 
-User.register(new User({username: user,gender : gender, email : email  }), pass , function(err, user){
+User.register(new User({username: username,gender : gender, email : email  }), password , function(err, user){
     if(err)
     {  
         return res.render('register');
@@ -80,17 +193,23 @@ User.register(new User({username: user,gender : gender, email : email  }), pass 
 
 
 app.get("/login", function(req,res){
-
-    res.render("login");
+ res.render("login");
 });
 
 app.post("/login" , passport.authenticate("local",{
-   
-    successRedirect : "/elevation" , 
+    
 
     failureRedirect : "/login"
     
  }), function(req,res){
+     console.log(req.body.username);
+     if(req.body.username === 'admin'){
+         req.session.admin = true;
+        res.redirect("/admin");
+     }
+     else{
+         res.redirect('/elevation');
+     }
  });
 
 
@@ -117,46 +236,45 @@ function isLoggedIn(req,res,next){
 
 
 
-
 app.get("/home", function(req,res)
 {
-
-    design.find({},function(err,alldesign){
-		if(err){
-			console.log(err);
-		}
+ design.find({},function(err,alldesign){
+	if(err){
+		console.log(err);}
 		else{
-			res.render("home.ejs",{designs:alldesign});
-		}
+			res.render("home.ejs",{designs:alldesign});}
 	});
 	
     //res.sendFile(path.resolve('\Backup\www\color\views\color_game.html'));
-//    res.render("home.ejs");
+    //    res.render("home.ejs");
     //res.sendFile(path.join(__dirname + '/views/home.ejs'))
 });
 
-app.get("/admin", function(req,res)
+app.get("/admin",function(req,res)
 {
+     //res.sendFile(path.resolve('\Backup\www\color\views\color_game.html'));
+    // if(pass != "null")
+    // {
+    //     console.log(pass);
     
-    //res.sendFile(path.resolve('\Backup\www\color\views\color_game.html'));
-    if(pass != "null")
-    {
-        console.log(pass);
-    res.render("admin.ejs");
+    // }
+    // else{
+    //     console.log("else");
+    //     res.redirect("/home");
+    // }
+    if(req.isAuthenticated() && req.session.admin){
+     res.render("admin.ejs");
     }
-    else{
-        console.log("else");
-        res.redirect("/home");
-    }
+    
     //res.sendFile(path.join(__dirname + '/views/arch_pjt.ejs'))
 });
 
+
 app.post("/admin", function(req,res)
-{
-    var pass = "deep1234";
-    var pass1= req.body.pass;
+{ pass1= req.body.pass;
     if(pass.localeCompare(pass1) == 0)
     {
+        bool= true;
     res.redirect("/admin");
     }
     else{
@@ -164,13 +282,16 @@ app.post("/admin", function(req,res)
     }
 });
 
-
+function isCorrect (req,res,next)
+{
+    if(bool === true)
+    {return next();}
+    res.redirect('/home');
+}
 
 app.post("/home", function(req,res){
     // get data from form and add to campground
-    
     // n=n+1;
-    
     var image = req.body.image;
     var name = req.body.name;
     var desc = req.body.desc;
@@ -189,7 +310,6 @@ app.post("/home", function(req,res){
 
 app.get("/about", function(req,res)
 {
-    
     //res.sendFile(path.resolve('\Backup\www\color\views\color_game.html'));
     res.render("about.ejs");
     //res.sendFile(path.join(__dirname + '/views/arch_pjt.ejs'))

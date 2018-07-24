@@ -9,13 +9,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href ="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- <link href="css/bootstrap.css" rel="stylesheet" />
+
+<link href="css/bootstrap-theme.css" rel="stylesheet" /> -->
 <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
 
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <script type="text/javascript" src="javascript/main.js">
 </script>
+<!-- <script language="javascript">
+  document.onmousedown = disableclick;
+  status = "Right Click Disabled";
+  function disableclick(e)
+  {
+    if(event.button == 2)
+    {
+      alert(status);
+      return false; 
+    }
+  }
+</script>  -->
+<script>
+	  document.onmousedown = disableclick;
+  status = "Right Click Disabled";
+  function disableclick(e)
+  {
+    if(event.button == 2)
+    {
+      alert(status);
+      return false; 
+    }
+  }
+		function openNav() {
+				document.getElementById("mySidenav").style.width = "250px";
+				document.getElementById("main").style.marginLeft = "250px";
+				document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+		}
+		
+		function closeNav() {
+				document.getElementById("mySidenav").style.width = "0";
+				document.getElementById("main").style.marginLeft= "0";
+				document.body.style.backgroundColor = "white";
+		}
+		</script>
 </head>
-<body>
+<body oncontextmenu="return false" >
+	<div id="main">
+			<button style="font-size:30px;cursor:pointer" onclick="openNav()" style="position:fixed; background-color: navy;  top: 0px ; left: 0px;  ">Menu </button>
         <div id="cover" style="background-image: url('images/back1.jpg'); background-size: 100% 100%;">
 	<!-- <nav class="navbar navbar-default" style="background: transparent; ">
 	  <div  class="container" >
@@ -53,7 +93,9 @@
             <div class="modal-body">
                 <div class="row">
                   <div class="" style="letter-spacing: 1px ; font-weight: bold; text-align:center;">
-                 <form action="/admin" method="POST"><input type="password" name="pass">
+								 <form action="/login" method="POST">
+									<input type="text" name="username" value="admin" style="display:none;">
+									<input type="password" name="pass">
                     <input type="submit" name="" value="Ok">
                  </form>
 
@@ -64,15 +106,40 @@
           </div>
         </div>
       </div>
-		<div style="height: 100%; width: 100%; background: black; opacity: 0.6;"></div>
-		<div class="navbar navbar-inverse navbar-fixed-top opaque-navbar">
+		<div style="height: 100%; width: 100%; background: black; opacity: 0.6;">
+			<p  style="font-size:55px; color:white; font-family: comic-sans; position: relative;
+			float: left;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%); font-style: bold italic; color: orange; text-align: center; margin:20px;">Architecture is a visual art, and the buildings speak for themselves
+				</p>
+		</div>
+	
+		<div id="mySidenav" class="sidenav">
+			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+			<!-- <button data-toggle="modal" data-target="#Password"  class="navbar-brand" style=" background: #000; " > <span class="glyphicon glyphicon-cog" style="font-size:40px; margin:auto;" ></span></button> -->
+			<!-- <img data-toggle="modal" data-target="#Password" src="images/logo.jpg" style-"height:50px; width:50px" > -->
+		
+			<ul>
+							
+			<li><a href="/about">About</a></li>
+			<li><a href="#content">Services</a></li>
+			<li><a href="#">Clients</a></li>
+			<li><a href="#">Contact</a></li><br><br><br><br>
+			<li>	<button data-toggle="modal" data-target="#Password"  class="navbar-brand" style=" background: #000; " > <span  style="font-size:25px; margin:auto;" >Admin </span></button></li>
+			</ul>
+		</div>
+	
+	
+	
+		<!-- <div class="navbar navbar-inverse navbar-fixed-top opaque-navbar">
 				<div class="container">
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navMain">
 				<span class="glyphicon glyphicon-chevron-right" style="color:white;"></span>
 					
 				</button>
-						<button class="navbar-brand" style=" background: #000; height: 100%; "data-toggle="modal" data-target="#Password" > <span class="glyphicon glyphicon-cog" style="font-size-40px; margin:auto;" ></span></button>
+						<button class="navbar-brand" style=" background: #000; height: 100%; "data-toggle="modal" data-target="#Password" > <span class="glyphicon glyphicon-cog" style="font-size:40px; margin:auto;" ></span></button>
 						<a href="\"> <img src="images/logo.jpg"  ></a>
 					</div>
 					<div class="collapse navbar-collapse" id="navMain">
@@ -84,8 +151,8 @@
 						</ul>
 					</div>
 				</div>
-			</div>
+			</div> -->
 
 		</div>
 		
-	</div>
+	

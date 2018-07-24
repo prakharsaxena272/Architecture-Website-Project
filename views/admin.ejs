@@ -1,17 +1,74 @@
-<% include partials/header %>
-<div class="container">
-    <div class="row">
-<h1 style="text-align: center;"> create a new campground </h1>
-<div style="width: 35%; margin: 0 auto; ">
-<form action="/home" method="POST"> 
-<input type="text" class="form-control" name="name" placeholder="name">
-<input type="text" class="form-control" name="image" placeholder="design url">
-<input type="text" class="form-control" name="desc" placeholder="description">
+<html>
+<head>
 
-<button class="btn btn-lg btn-primary btn-block"> Submit </button>
-</form>
-</div>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+  <script src="jquerycycle.js" type="text/javascript"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href ="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+<!-- <link href="css/bootstrap.css" rel="stylesheet" />
+
+<link href="css/bootstrap-theme.css" rel="stylesheet" /> -->
+<link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<script type="text/javascript" src="javascript/main.js">
+</script>
+<script language="javascript">
+  document.onmousedown = disableclick;
+  status = "Right Click Disabled";
+  function disableclick(e)
+  {
+    if(event.button == 2)
+    {
+      alert(status);
+      return false; 
+    }
+  }
+</script> 
+</head>
+<body>
+
+<h1><center style="color:orange;"> Welcome Sir </center></h1>
+        <div class="container">
+            <div class="row">
+                <div class"col-lg-6 col-sm-12">
+                <h3>Upload Project Image/Pdf</h1>
+                <%= typeof msg != 'undefined' ? msg : '' %>
+                <form action="/upload" method="POST" enctype="multipart/form-data">
+                  <div class="file-field input-field">
+                    <div class="btn grey">
+                      <span>File</span>
+                      <input name="projects" type="file">
+                    </div>
+                    <div class="file-path-wrapper">
+                      <input class="file-path validate" type="text">
+                    </div>
+                  </div>
+                  <button type="submit" class="btn">Submit</button>
+                </form>
+                <br>
+              </div>
+
+
+            
+              <div class"col-lg-6 col-sm-12">
+                <h3 style=""> Add to Website </h1>
+                <div style=" margin: 0 auto; ">
+                        <form action="/home" method="POST"> 
+                        <input type="text" class="form-control" name="name" placeholder="name">
+                        <input type="text" class="form-control" name="image" placeholder="design url">
+                        <input type="text" class="form-control" name="desc" placeholder="description">
+
+                        <button class="btn btn-lg btn-primary btn-block"> Submit </button>
+                        </form>
+                </div>
 <!-- btn block to take entire width -->
+                </div>
+            
+            </div>
 </div>
-</div>
-<% include partials/footer %>

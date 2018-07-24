@@ -1,0 +1,239 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Kalinga Architectures Pvt. Ltd. :: Bed Rooms</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/galleria.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="script/jquery.min.js"></script>
+	<script type="text/javascript" src="script/jquery.galleria.js"></script>
+	<script type="text/javascript">
+	
+	$(document).ready(function(){
+		/*if($.browser.msie && $.browser.version < 7.0) {
+			$(window).scroll(function(){
+				$('.left').css('top', $(document).scrollTop()+'px');
+			});
+		}*/
+		
+		$('.gallery_demo_unstyled').addClass('gallery_demo'); // adds new class name to maintain degradability
+		
+		$('ul.gallery_demo').galleria({
+			history   : true, // activates the history object for bookmarking, back-button etc.
+			clickNext : true, // helper for making the image clickable
+			insert    : '#main_image', // the containing selector for our main image
+			onImage   : function(image,caption,thumb) { // let's add some image effects for demonstration purposes
+				
+				// fade in the image & caption
+				image.css('display','none').fadeIn(1000);
+				caption.css('display','none').fadeIn(1000);
+				
+				// fetch the thumbnail container
+				var _li = thumb.parents('li');
+				
+				// fade out inactive thumbnail
+				_li.siblings().children('img.selected').fadeTo(500,0.3);
+				
+				// fade in active thumbnail
+				thumb.fadeTo('fast',1).addClass('selected');
+				
+				// add a title for the clickable image
+				image.attr('title','Next image >>');
+			},
+			onThumb : function(thumb) { // thumbnail effects goes here
+				
+				// fetch the thumbnail container
+				var _li = thumb.parents('li');
+				
+				// if thumbnail is active, fade all the way.
+				var _fadeTo = _li.is('.active') ? '1' : '0.3';
+				
+				// fade in the thumbnail when finnished loading
+				thumb.css({display:'none',opacity:_fadeTo}).fadeIn(1500);
+				
+				// hover effects
+				thumb.hover(
+					function() { thumb.fadeTo('fast',1); },
+					function() { _li.not('.active').children('img').fadeTo('fast',0.3); } // don't fade out if the parent is active
+				)
+			}
+		});
+	});
+	
+	</script>
+	<style media="screen,projection" type="text/css"></style>
+	
+</head>
+<body>
+<div id="outer">
+	<div class="left">
+    	<ul>
+		<li><a href="2014-15.php">2014-15</a></li>
+        <li><a href="2013.php">2013</a></li>  
+                <li><a href="elevations.php">2012</a></li>
+<li><a href="hotel.php">Hotels</a></li>
+        		<li><a href="portfolio.php">Bed Room</a></li>
+            <li><a href="drawing_rooms.php">Drawing Rooms</a></li>
+            <li><a href="kitchen.php">Kitchen</a></li>
+            <li><a href="bunglow.php">Bunglow</a></li>
+            <li><a href="temple.php">Temple</a></li>
+            <li><a href="gallery.php">Gallery</a></li>
+            <li><a href="disco_bar.php">Disco & Bar</a></li>
+            <li><a href="ceiling_working.php">Ceiling with Working</a></li>
+            <li><a href="new_commercial.php">New Commercial</a></li>
+            <li><a href="mall_plan.php">Mall Plan</a></li>
+            <li><a href="exteriorgates.php">Exterior Gates</a></li>
+            <li><a href="commercial_exterior.php">Commercial Exterior</a></li>
+            <li><a href="apartment.php">Apartment</a></li>
+			<li><a href="hospital.php">Hospital</a></li>
+			<li><a href="reception.php">Reception</a></li>
+			<li><a href="gates.php">Gates</a></li>
+            
+</ul><br /><br />
+        <strong class="color">Quick Links</strong>
+		<div class="ext">
+		<p><a href="about.php">About Us</a></p>
+		<p><a href="team.php">Team</a></p>
+		<p><a href="specialization.php">Specialization</a></p>
+		<p><a href="profile.php">Profile</a></p>
+		<p><a href="contact.php">Contact Us</a></p></div>
+		
+		<br /><br />
+<img src="images/line_over.jpg" width="200" height="1" alt="" /><br /><br />
+<strong class="color1"><a href="http://www.pearlcreation.com/" target="_blank">Designer & Developed By pearlcreation.com</a></strong><br /><br />
+<br />
+  </div>
+    
+<div class=" right">
+    	<div class="header"><img src="images/logo_name.png" width="641" height="95" alt="" /></div>
+        
+        <!--main-->
+        <div class="demo">
+<div id="main_image"></div>
+<ul class="gallery_demo_unstyled">
+     <li class="active"><img src="images/elevations/103.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/104.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/105.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/106.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/107.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/108.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/109.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/110.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/111.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/112.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/113.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/114.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/115.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/116.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/117.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/118.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/119.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/120.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/121.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/122.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/123.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/2.jpg" alt="Stones" title="" /></li>
+    <li ><img src="images/elevations/3.jpg" alt="Grass Blades" title="" /></li>
+    <li><img src="images/elevations/4.jpg" alt="Ladybug" title="" /></li>
+    <li><img src="images/elevations/5.jpg" alt="Lightning" title="" /></li>
+    <li><img src="images/elevations/6.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/7.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/8.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/9.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/10.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/11.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/12.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/13.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/14.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/15.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/16.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/17.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/18.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/19.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/20.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/21.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/22.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/23.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/24.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/25.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/31.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/27.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/30.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/38.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/39.jpg" alt="Stones" title="" /></li>
+    <li ><img src="images/elevations/40.jpg" alt="Grass Blades" title="" /></li>
+    <li><img src="images/elevations/41.jpg" alt="Ladybug" title="" /></li>
+    <li><img src="images/elevations/41.jpg" alt="Lightning" title="" /></li>
+    <li><img src="images/elevations/42.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/43.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/44.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/45.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/46.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/47.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/48.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/49.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/50.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/51.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/52.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/53.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/53.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/55.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/56.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/57.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/58.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/59.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/60.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/61.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/62.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/63.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/64.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/65.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/66.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/67.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/68.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/69.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/70.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/71.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/72.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/73.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/74.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/75.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/76.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/77.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/78.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/79.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/80.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/81.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/82.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/83.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/84.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/85.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/86.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/87.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/88.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/87.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/88.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/89.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/90.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/91.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/92.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/93.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/94.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/95.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/96.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/97.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/98.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/99.jpg" alt="Lotus" title="" /></li>
+    <li><img src="images/elevations/100.jpg" alt="Lotus" title="" /></li>
+</ul>
+<div class="clear"></div>
+<p class="nav"><a href="#" onclick="$.galleria.prev(); return false;">&laquo; previous</a> | <a href="#" onclick="$.galleria.next(); return false;">next &raquo;</a></p>
+<div class="clear"></div>
+</div>
+        
+  </div>
+    <div class="clear"></div>
+</div>
+</body>
+</html>
